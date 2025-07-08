@@ -3,8 +3,35 @@
 
 #include <iostream>
 
+using namespace std;
+
 int main()
 {
+    const auto pFuncPalindrome = [](const string& value)
+    {
+        bool result(true);
+        if (value.size() > 1)
+        {
+            auto nbSteps(value.size()/2);
+            for (auto step(0); step < nbSteps; ++step)
+            {
+                if (value[step] != value[value.size() - 1 - step])
+                {
+                    result = false;
+                    break;
+                };
+            }
+        }
+        cout << "value '" << value << "': " << (result ? "is a palindrome" : "is not a palindrome") << endl;
+    };
+
+    pFuncPalindrome("");
+    pFuncPalindrome("5");
+    pFuncPalindrome("11");
+    pFuncPalindrome("112");
+    pFuncPalindrome("123454321");
+    pFuncPalindrome("12345544321");
+
     std::cout << "Hello World!\n";
 }
 
